@@ -1,53 +1,62 @@
 ---
-import { Picture } from "astro:assets";
-import heroImage from "assets/hero.png";
-import Link from "@components/ui/link.astro";
-import { Icon } from "astro-icon/components";
+import Picture from 'astro/components/Picture.astro';
+import nekohigeLogo from 'assets/nekohigeLogo.webp';
+import heroImage from '@assets/hero-two-cats.png';
 ---
 
-<main
-  class="grid lg:grid-cols-2 place-items-center pt-16 pb-8 md:pt-12 md:pb-24">
-  <div class="py-6 md:order-1 hidden md:block">
-    <Picture
-      src={heroImage}
-      alt="Astronaut in the air"
-      widths={[200, 400, 600]}
-      sizes="(max-width: 800px) 100vw, 620px"
-      loading="eager"
-      format="avif"
-    />
-  </div>
-  <div>
-    <h1
-      class="text-5xl lg:text-6xl xl:text-7xl font-bold lg:tracking-tight xl:tracking-tighter">
-      Marketing website done with Astro
-    </h1>
-    <p class="text-lg mt-4 text-slate-600 max-w-xl">
-      Astroship is a starter template for startups, marketing websites & landing
-      pages.<wbr /> Built with Astro.build and TailwindCSS. You can quickly
-      create any website with this starter.
-    </p>
-    <div class="mt-6 flex flex-col sm:flex-row gap-3">
-      <Link
-        href="#"
-        href="https://web3templates.com/templates/astroship-starter-website-template-for-astro"
-        target="_blank"
-        class="flex gap-1 items-center justify-center"
-        rel="noopener">
-        <Icon class="text-white w-5 h-5" name="bx:bxs-cloud-download" />
-
-         Download for Free
-      </Link>
-      <Link
-        size="lg"
-        style="outline"
-        rel="noopener"
-        href="https://github.com/surjithctly/astroship"
-        class="flex gap-1 items-center justify-center"
-        target="_blank">
-        <Icon class="text-black w-4 h-4" name="bx:bxl-github" />
-         GitHub Repo
-      </Link>
+<main>
+  <div class="hero-grid">
+    <div class="hero-pict">
+      <Picture src={heroImage} alt="two-cats" />
+    </div>
+    <div class="hero-logo fade-in">
+      <Picture src={nekohigeLogo} alt="nekohige" />
     </div>
   </div>
 </main>
+
+<style>
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 15% 1fr 15%;
+  }
+
+  .hero-pict {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+  }
+
+  .hero-logo {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    z-index: 1;
+    width: 30svh;
+    align-self: center;
+    justify-self: center;
+    background-color: rgba(255 255 255 /0.9);
+    @media (max-width: 640px) {
+      width: 20svh;
+    background-color: rgba(255 255 255 /0.8);
+    }
+  }
+
+  /*フェードイン*/
+  .fade-in {
+    opacity: 0;
+    animation-name: fade-in;
+    animation-duration: 2.5s;
+    animation-timing-function: cubic-bezier();
+    animation-fill-mode: forwards;
+    animation-delay: 0.8s;
+  }
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      /* transform: translateY(); */
+    }
+    100% {
+      opacity: 1;
+      /* transform: translateY(0); */
+    }
+  }
+</style>

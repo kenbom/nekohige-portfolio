@@ -6,7 +6,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: [
-          "Bricolage Grotesque Variable",
+          "ヒラギノ角ゴシック",
           "Inter Variable",
           "Inter",
           ...defaultTheme.fontFamily.sans,
