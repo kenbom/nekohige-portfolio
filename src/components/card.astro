@@ -2,35 +2,124 @@
 import Image from 'astro/components/Image.astro';
 import man from '../assets/profile-man.png';
 import cat from '../assets/work-cat.png';
+
+const profiles = [
+  {
+    year: '2014年~',
+    job: '一部上場企業で幅広くシステム業務に携わる',
+  },
+  {
+    year: '2019年~',
+    job: '独立を志し合同会社猫髭工房を設立',
+  },
+  {
+    year: '2020年~',
+    job: 'フリーランスとして大手キャリアなどでフロントエンド業務に従事',
+  },
+  {
+    year: '2023年~',
+    job: '地方移住を機にサイト制作受注を主軸として活動中',
+  },
+];
+
+const works = [
+  {
+    title: '民泊施設「宿屋 ふう」様',
+    url: '#',
+    comment: 'サイトデザインから公開までをご依頼いただきました',
+  },
+  {
+    title: '古民家「髙橋別荘」様',
+    url: '#',
+    comment: '写真撮影、サイト構築をご依頼いただきました',
+  },
+  {
+    title: '参考：デモサイト',
+    url: '#',
+    comment: '写真撮影、サイト構築をご依頼いただきました',
+  },
+];
 ---
 
-<div class="card-container">
-  <div class="w-1/3">
-    <Image src={man} alt={'制作者'} />
-  </div>
-  <div class="text-container">
-    <h3 class="font-semibold text-lg">Profile:制作エンジニア</h3>
-    <ul>
-      <li>2014年~:一部上場企業で幅広くシステム業務に携わる</li>
-      <li>2019年~:独立を志し合同会社猫髭工房を設立</li>
-      <li>
-        2020年~:フリーランスとして大手キャリアなどでフロントエンド業務に従事
-      </li>
-      <li>2023年~:地方移住を機にサイト制作受注を主軸として活動中</li>
-    </ul>
+<div class="outer-container">
+  <div class="profiles-container bg-slate-200 p-5 mt-12 rounded-md">
+    <div>
+      <Image src={man} alt={'制作者'} class="w-48 rounded-full" />
+    </div>
+    <div class="text-container">
+      <h3 class="font-semibold text-lg">担当エンジニアのプロフィール</h3>
+      <div class="profiles">
+        {
+          profiles.map((profile) => (
+            <>
+              <p class="year mr-2">{profile.year}</p>
+              <p class="job">{profile.job}</p>
+            </>
+          ))
+        }
+      </div>
+    </div>
   </div>
 </div>
 
-<div class="card-container">
-  <div class="w-1/3">
-  <Image src={cat} alt={'実績を見る猫'} />
-  </div>
-  <div class="text-container">
-    <h3 class="font-semibold text-lg">Works:公開可能なサイトのみ</h3>
-    <ul>
-      <li>民泊施設のサイト構築</li>
-      <li>古民家紹介のサイト構築</li>
-      <li>参考：デモサイト</li>
-    </ul>
+<div class="outer-container">
+  <div class="works-container bg-slate-200 p-5 mt-12 rounded-md">
+    <div class="text-container">
+      <h3 class="font-semibold text-lg">これまでのお仕事（公開OKサイトのみ)</h3>
+
+      {
+        works.map((work) => (
+          <div>
+            <p class="works">{work.title}</p>
+            <p class="comment">{work.comment}</p>
+          </div>
+        ))
+      }
+    </div>
+    <div>
+      <Image src={cat} alt={'実績を見る猫'} />
+    </div>
   </div>
 </div>
+
+<style>
+  .outer-container {
+    display: grid;
+  }
+  .profiles-container {
+    @media (min-width: 768px) {
+      width: 70%;
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 150px 1fr;
+      gap: 20px;
+      justify-self: start;
+    }
+  }
+  .profiles {
+    @media (min-width: 768px) {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      grid-gap: 4px;
+    }
+  }
+
+  .year {
+    grid-column: 1 / 2;
+  }
+
+  .job {
+    grid-column: 2 / 3;
+  }
+
+  .works-container {
+    @media (min-width: 768px) {
+      width: 70%;
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 1fr 150px;
+      gap: 20px;
+      justify-self: end;
+    }
+  }
+</style>
