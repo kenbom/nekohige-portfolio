@@ -6,7 +6,7 @@ const features = [
   {
     title: '高品質の理由',
     description:
-      "Astroフレームワーク上で蓄積した高品質のWebコンポーネントを再利用します。安定した機能はそのままにデザインは御社のご希望どおりにカスタマイズ可能となります",
+      "Astroフレームワーク上で蓄積した高品質のWebコンポーネントを再利用します。安定した機能はそのままにデザインはお客様のご希望どおりにカスタマイズ可能となります",
     icon: 'bx:bxs-briefcase',
   },
   {
@@ -25,18 +25,18 @@ const features = [
 ---
 
 <div class="grid grid-cols-1 place-items-center mt-1 md:mt-10">
-  <h2 class="text-2xl lg:text-5xl md:text-xl font-bold lg:tracking-tight">
+  <h2 id='mission' class="text-2xl lg:text-5xl md:text-xl font-bold lg:tracking-tight">
     高品質・低価格・セキュア<br />
   </h2>
   <h2 class="text-2xl lg:text-5xl md:text-xl font-bold lg:tracking-tight">
     Webサイト制作
   </h2>
   <p class="text-lg mt-4 text-slate-600">
-    猫の髭は古来より幸運のシンボルでした。お客様のビジネスチャンスの拡大、それこそが弊社の役割です
+    猫の髭は古来より幸運のシンボルでした。お客様の商機拡大のお手伝を, そんな想いの会社です
   </p>
 </div>
 
-<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-2 gap-3 md:mt-8 md:gap-5">
   {
     features.map((item) => (
       <div class="flex gap-4 items-start">
