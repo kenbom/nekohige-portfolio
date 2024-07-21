@@ -1,0 +1,81 @@
+---
+import { Picture } from 'astro:assets';
+import DrawerHeader from '../components/Drawer-header.astro';
+import { menuItems } from '@assets/constants.astro';
+import nekohigeLogo from '@assets/nekohigeLogo.webp';
+interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<div class="">
+  <div
+    class="container z-20 bg-white pt-5 fixed left-0 right-0 top-0 max-w-full">
+    <div class="header">
+      <Picture src={nekohigeLogo} alt='猫髭ロゴ"' class="w-8" />
+      <p></p>
+      {
+        menuItems.map((item) => (
+          <a href={item.link}>
+            <p>{item.title}</p>
+          </a>
+        ))
+      }
+      <div class="navi">
+        <DrawerHeader />
+      </div>
+      <div></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: 15% 1fr 15%;
+  }
+
+  .header {
+    grid-column: 2 / 3;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-auto-flow: column;
+    align-items: center;
+    gap: 10px;
+
+    @media (max-width: 496px) {
+      grid-template-columns: auto 0px 1fr;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    @media (max-width: 496px) {
+      display: none;
+    }
+  }
+
+  h2 {
+    margin-top: 0px;
+    font-size: 2rem;
+    font-weight: bold;
+    @media (max-width: 496px) {
+      font-size: 1.5rem;
+    }
+  }
+
+  p {
+    margin: 1px;
+    color: rgb(27, 25, 25);
+  }
+
+  .navi {
+    display: none;
+    @media (max-width: 496px) {
+      display: flex;
+      justify-self: end;
+    }
+  }
+</style>
