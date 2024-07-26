@@ -19,9 +19,7 @@ const resolvedImageWithDomain = new URL(
 
 const { title } = Astro.props;
 
-const makeTitle = title
-  ? title + ' | ' + 'Astroship'
-  : 'Astroship - Starter Template for Astro with Tailwind CSS';
+const makeTitle = title ? title : 'Webサイト制作:猫髭工房';
 ---
 
 <!doctype html>
@@ -35,27 +33,31 @@ const makeTitle = title
     <!-- <link rel="preload" as="image" href={src} alt="Hero" /> -->
     <SEO
       title={makeTitle}
-      description="Astroship is a starter website template for Astro built with TailwindCSS."
+      description="高品質、低価格、セキュアなWebサイト制作"
       canonical={canonicalURL}
+      <!--
       twitter={{
         creator: '@surjithctly',
         site: '@web3templates',
         card: 'summary_large_image',
       }}
-      openGraph={{
-        basic: {
-          url: canonicalURL,
-          type: 'website',
-          title: `Astroship - Starter Template for Astro`,
-          image: resolvedImageWithDomain,
-        },
-        image: {
-          alt: 'Astroship Homepage Screenshot',
-        },
-      }}
-    />
-  </head>
-  <body>
+      -->
+      openGraph={
+        {
+          basic: {
+            url: canonicalURL,
+            type: 'website',
+            title: `高品質、低価格、セキュアなWebサイト制作`,
+            image: resolvedImageWithDomain,
+          },
+          image: {
+            alt: '猫髭工房の猫たち',
+          },
+        }
+      }
+      />
+    </SEO>
+  </head><body>
     <Header title="メニュー" />
     <!-- <Navbar /> -->
     <slot />
@@ -63,14 +65,19 @@ const makeTitle = title
     <style is:global>
       /* Improve Page speed */
       /* https://css-tricks.com/almanac/properties/c/content-visibility/ */
-      img {
-        content-visibility: auto;
+      html {
+        scroll-behavior: smooth;
+      }
+      :where(h2) {
+        scroll-margin-top: 48px;
       }
 
-      a.anchor {
-        display: block;
-        padding-top: 70px;
-        margin-top: -70px;
+      :where(h3, p, div) {
+        scroll-margin-top: 60px;
+      }
+
+      img {
+        content-visibility: auto;
       }
     </style>
   </body>
