@@ -6,8 +6,9 @@ import icon from "astro-icon";
 
 import alpinejs from "@astrojs/alpinejs";
 
+
 // https://astro.build/config
 export default defineConfig({
-  site: "https://astroship.web3templates.com",
-  integrations: [tailwind(), mdx(), sitemap(), icon(), alpinejs()]
+  site: "https://nekohige.com",
+  integrations: [tailwind(), mdx(), sitemap(), icon(), alpinejs({ entrypoint: '/src/entrypoint' })]
 });

@@ -11,7 +11,15 @@ import { techstack } from '@assets/constants.astro';
 <div class="outer-container">
   <div class="profiles-container bg-slate-200 p-5 mt-12 rounded-md">
     <div id="profile">
-      <Image src={man} alt={'制作者'} class="w-48 rounded-full" />
+      <div x-data="{ shown: false }" x-intersect="shown = true">
+        <div
+          x-show="shown"
+          x-transition.duration.1000ms
+          x-transition.delay.500ms
+          >
+          <Image src={man} alt={'制作者'} class="w-48 rounded-full" />
+        </div>
+      </div>
     </div>
     <div class="text-container">
       <h3 class="font-semibold text mb-3">担当エンジニアのプロフィール</h3>
@@ -30,111 +38,127 @@ import { techstack } from '@assets/constants.astro';
 </div>
 
 <div class="outer-container">
-  <div class="works-container bg-slate-200 p-5 mt-12 rounded-md">
-    <div class="text-container">
-      <h3 id="work" class="font-semibold mb-3">これまでのお仕事</h3>
+      <div class="works-container bg-slate-200 p-5 mt-12 rounded-md">
+        <div class="text-container">
+          <h3 id="work" class="font-semibold mb-3">これまでのお仕事</h3>
 
-      {
-        works.map((work) => (
-          <>
-            <p class="works">{work.title}</p>
-            <p class="comment pb-3 text-slate-600">{work.comment}</p>
-          </>
-        ))
-      }
-    </div>
-    <div>
-      <Image src={cat} alt={'実績を見る猫'} class="md:mt-8" />
-    </div>
-  </div>
-</div>
-
-<div class="outer-container">
-  <div class="tech-stack-container bg-slate-200 p-5 mt-12 rounded-md">
-    <div class="text-container">
-      <h3 id="tech" class="font-semibold mb-3">猫髭工房の採用技術</h3>
-      <div class="tech-stack">
-        {
-          techstack.map((item) => (
-            <>
-              <div class="flex gap-1">
-                {' '}
-                <Icon class="size-6 md:size-8 text-zinc-600" name={item.logo} />
-                <p class="job">{item.title}</p>
-              </div>
-              <p class="pb-3 text-slate-600">{item.comment}</p>
-            </>
-          ))
-        }
+          {
+            works.map((work) => (
+              <>
+                <a href=`${work.url}` target="_blank" rel="noopener noreferrer" class="works hover:opacity-50">{work.title}</a>
+                <p class="comment pb-3 text-slate-600">{work.comment}</p>
+              </>
+            ))
+          }
+        </div>
+        <div>
+          <div x-data="{ shown: false }" x-intersect="shown = true">
+            <div
+              x-show="shown"
+              x-transition.duration.1000ms
+              x-transition.delay.500ms>
+              <Image src={cat} alt={'実績を見る猫'} class="md:mt-8" />
+            </div>
+          </div>
+        </div>
       </div>
-      <p class="mt-3 text-sm">
-        上記フレームワーク、ライブラリなどを公開頂いている全ての方々に感謝いたします
-      </p>
     </div>
-  </div>
-</div>
 
-<style>
-  .outer-container {
-    display: grid;
-  }
-  .profiles-container {
-    @media (min-width: 768px) {
-      width: 70%;
-      display: grid;
-      grid-auto-flow: column;
-      grid-template-columns: 150px 1fr;
-      gap: 20px;
-      justify-self: start;
+    <div class="outer-container">
+      <div x-data="{ shown: false }" x-intersect="shown = true">
+        <div
+          x-show="shown"
+          x-transition.duration.1000ms
+          x-transition.delay.1000ms>
+          <div class="tech-stack-container bg-slate-200 p-5 mt-12 rounded-md">
+            <div class="text-container">
+              <h3 id="tech" class="font-semibold mb-3">猫髭工房の採用技術</h3>
+              <div class="tech-stack">
+                {
+                  techstack.map((item) => (
+                    <>
+                      <div class="flex gap-1">
+                        {' '}
+                        <Icon
+                          class="size-6 md:size-8 text-zinc-600"
+                          name={item.logo}
+                        />
+                        <p class="job">{item.title}</p>
+                      </div>
+                      <p class="pb-3 text-slate-600">{item.comment}</p>
+                    </>
+                  ))
+                }
+              </div>
+              <p class="mt-3 text-sm">
+                上記フレームワーク、ライブラリなどを公開頂いている全ての方々に感謝いたします
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
-      .profiles {
+    <style>
+      .outer-container {
+        display: grid;
+      }
+      .profiles-container {
         @media (min-width: 768px) {
+          width: 70%;
           display: grid;
-          grid-template-columns: auto 1fr;
-          grid-gap: 4px;
+          grid-auto-flow: column;
+          grid-template-columns: 150px 1fr;
+          gap: 20px;
+          justify-self: start;
+
+          .profiles {
+            @media (min-width: 768px) {
+              display: grid;
+              grid-template-columns: auto 1fr;
+              grid-gap: 4px;
+            }
+          }
+
+          .year {
+            grid-column: 1 / 2;
+          }
+
+          .job {
+            grid-column: 2 / 3;
+          }
         }
       }
 
-      .year {
-        grid-column: 1 / 2;
+      .works-container {
+        @media (min-width: 768px) {
+          width: 70%;
+          display: grid;
+          grid-auto-flow: column;
+          grid-template-columns: 1fr 150px;
+          gap: 20px;
+          justify-self: end;
+        }
       }
 
-      .job {
-        grid-column: 2 / 3;
+      .tech-stack-container {
+        @media (min-width: 768px) {
+          width: 70%;
+          display: grid;
+          grid-auto-flow: column;
+          grid-template-columns: 1fr;
+          gap: 20px;
+          justify-self: start;
+        }
+
+        .tech-stack {
+          @media (min-width: 768px) {
+            display: grid;
+            grid-template-columns: 100px auto;
+            grid-gap: 10px;
+          }
+        }
       }
-    }
-  }
-
-
-  .works-container {
-    @media (min-width: 768px) {
-      width: 70%;
-      display: grid;
-      grid-auto-flow: column;
-      grid-template-columns: 1fr 150px;
-      gap: 20px;
-      justify-self: end;
-    }
-
-  }
-
-  .tech-stack-container {
-    @media (min-width: 768px) {
-      width: 70%;
-      display: grid;
-      grid-auto-flow: column;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      justify-self: start;
-    }
-
-    .tech-stack {
-      @media (min-width: 768px) {
-        display: grid;
-        grid-template-columns: 100px auto;
-        grid-gap: 10px;
-      }
-    }
-
-  }
-</style>
+    </style>
+  </div>
+</div>

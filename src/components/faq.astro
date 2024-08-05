@@ -4,7 +4,12 @@ import {faqPrice} from '@assets/constants.astro'
 import {faqSite} from '@assets/constants.astro'
 import {faqOther} from '@assets/constants.astro'
 ---
+    <div x-data="{ shown: false }" x-intersect="shown = true">
+    <div x-show="shown" x-transition.duration.1000ms x-transition.delay.1000ms>
 <div class="w-full bg-slate-200 mt-16 p-3 rounded-md">
+
+       
+  
   <p id="faq" class="anchor font-semibold mb-3">お客様からのご質問にお答えします</p>
   <p>納期/ご依頼内容などについて</p>
 
@@ -16,7 +21,7 @@ class="relative w-11/12 mx-auto overflow-hidden text-sm font-normal bg-white bor
             <span>{faq.question}</span>
             <svg class="w-5 h-5 duration-300 ease-out" :class="{ '-rotate-[45deg]': activeAccordion==id }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
         </button>
-        <div x-show="activeAccordion==id" x-collapse x-cloak>
+        <div x-show="activeAccordion==id" x-collapse.duration.500ms x-cloak>
             <div class="p-4 pt-2 opacity-70">
               <span>{faq.answer}</span>
             </div>
@@ -33,7 +38,7 @@ class="relative w-11/12 mx-auto overflow-hidden text-sm font-normal bg-white bor
             <span>{faq.question}</span>
             <svg class="w-5 h-5 duration-300 ease-out" :class="{ '-rotate-[45deg]': activeAccordion==id }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
         </button>
-        <div x-show="activeAccordion==id" x-collapse x-cloak>
+        <div x-show="activeAccordion==id" x-collapse.duration.500ms x-cloak>
             <div class="p-4 pt-2 opacity-70">
               <span>{faq.answer}</span>
             </div>
@@ -50,7 +55,7 @@ class="relative w-11/12 mx-auto overflow-hidden text-sm font-normal bg-white bor
             <span>{faq.question}</span>
             <svg class="w-5 h-5 duration-300 ease-out" :class="{ '-rotate-[45deg]': activeAccordion==id }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
         </button>
-        <div x-show="activeAccordion==id" x-collapse x-cloak>
+        <div x-show="activeAccordion==id" x-collapse.duration.500ms x-cloak>
             <div class="p-4 pt-2 opacity-70">
               <span>{faq.answer}</span>
             </div>
@@ -67,7 +72,7 @@ class="relative w-11/12 mx-auto overflow-hidden text-sm font-normal bg-white bor
             <span>{faq.question}</span>
             <svg class="w-5 h-5 duration-300 ease-out" :class="{ '-rotate-[45deg]': activeAccordion==id }" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" /></svg>
         </button>
-        <div x-show="activeAccordion==id" x-collapse x-cloak>
+        <div x-show="activeAccordion==id" x-collapse.duration.500ms x-cloak>
             <div class="p-4 pt-2 opacity-70">
               <span>{faq.answer}</span>
             </div>
@@ -76,3 +81,5 @@ class="relative w-11/12 mx-auto overflow-hidden text-sm font-normal bg-white bor
 </div>
 ))}
   </div>
+    </div>
+</div>

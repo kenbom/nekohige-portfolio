@@ -9,7 +9,9 @@ interface Props {
 
 const { title } = Astro.props;
 ---
-
+<div x-data="{open:false}">
+  <div x-on:scroll.window.once="open= !open">
+    <div x-show="open">
 <header
   class="container z-20 bg-white opacity-80 pt-5 fixed left-0 right-0 top-0 max-w-full">
   <div class="header">
@@ -29,6 +31,9 @@ const { title } = Astro.props;
     <DrawerHeader />
   </div>
 </header>
+</div>
+</div>
+</div>
 
 <style>
   .container {
