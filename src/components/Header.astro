@@ -1,6 +1,7 @@
 ---
 import { Picture } from 'astro:assets';
-import DrawerHeader from '../components/Drawer-header.astro';
+// import DrawerHeader from '../components/Drawer-header.astro';
+import DrawerNav from './drawer-nav.astro';
 import { menuItems } from '@assets/constants.astro';
 import nekohigeLogo from '@assets/nekohigeLogo.webp';
 interface Props {
@@ -28,7 +29,8 @@ const { title } = Astro.props;
     }
   </div>
   <div class="navi">
-    <DrawerHeader />
+    <!-- <DrawerHeader /> -->
+    <DrawerNav />
   </div>
 </header>
 </div>
@@ -82,6 +84,7 @@ const { title } = Astro.props;
     @media (max-width: 496px) {
       display: flex;
       justify-self: end;
+      margin-right: 10px;
     }
   }
 </style>
