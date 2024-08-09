@@ -3,7 +3,7 @@ import { Image } from 'astro:assets';
 import imageOpen from '../assets/open.svg';
 import imageClose from '../assets/close.svg';
 import { menuItems } from '@assets/constants.astro';
-const item="test"
+const menuItem = 'test';
 ---
 
 <div
@@ -71,13 +71,21 @@ const item="test"
         </div>
         <div class="relative w-24">
           <ul class="Nav-list">
-            {
-              menuItems.map((item) => (
-                <li class="Nav-item">
-                  <a href={item.link}>{item.title}</a>
-                </li>
-              ))
-            }
+            <li class="Nav-item">
+              <a href="#about">About</a>
+            </li>
+            <li class="Nav-item">
+              <a href="#profile">Profile</a>
+            </li>
+            <li class="Nav-item">
+              <a href="#work">Work</a>
+            </li>
+            <li class="Nav-item">
+              <a href="#tech">Tech</a>
+            </li>
+            <li class="Nav-item">
+              <a href="#faq">FAQ</a>
+            </li>
           </ul>
         </div>
       </div>
@@ -93,7 +101,7 @@ const item="test"
   }
 
   .Nav-item {
-    color: #fafafa;
+    color: #222020;
     padding: 10px;
   }
 </style>
