@@ -1,20 +1,12 @@
 ---
 import { Image } from 'astro:assets';
 import imageOpen from '../assets/open.svg';
-import imageClose from '../assets/close.svg';
-import { menuItems } from '@assets/constants.astro';
-const menuItem = 'test';
 ---
 
 <div
   x-data="{ modalOpen: false }"
   @keydown.escape.window="modalOpen = false"
   class="relative z-50 w-auto h-auto">
-  <!-- <button
-    @click="modalOpen=true"
-    class="inline-flex items-center justify-center h-10 px-4 py-2 text-sm font-medium transition-colors bg-white border rounded-md hover:bg-neutral-100 active:bg-white focus:bg-white focus:outline-none focus:ring-2 focus:ring-neutral-200/60 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none"
-    >Open
-  </button> -->
   <button @click="modalOpen=true">
     <Image
       src={imageOpen}
@@ -70,22 +62,34 @@ const menuItem = 'test';
           </button>
         </div>
         <div class="relative w-24">
-          <ul class="Nav-list">
-            <li class="Nav-item">
-              <a href="#about">About</a>
-            </li>
-            <li class="Nav-item">
-              <a href="#profile">Profile</a>
-            </li>
-            <li class="Nav-item">
-              <a href="#work">Work</a>
-            </li>
-            <li class="Nav-item">
-              <a href="#tech">Tech</a>
-            </li>
-            <li class="Nav-item">
-              <a href="#faq">FAQ</a>
-            </li>
+          <ul
+            x-data="{menuItems:[
+              {
+                title: 'About',
+                link: '#about',
+              },
+              {
+                title: 'Profile',
+                link: '#profile',
+              },
+              {
+                title: 'Work',
+                link: '#work',
+              },
+              {
+                title: 'Tech',
+                link: '#tech',
+              },
+              {
+                title: 'FAQ',
+                link: '#faq',
+              },
+            ]}">
+            <template x-for="menuItem in menuItems">
+              <li class="Nav-item">
+                <a x-bind:href="menuItem.link" x-text="menuItem.title"></a>
+              </li>
+            </template>
           </ul>
         </div>
       </div>
@@ -105,3 +109,4 @@ const menuItem = 'test';
     padding: 10px;
   }
 </style>
+
